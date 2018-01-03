@@ -4,6 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
         String[] statements = {
+                "add 1.0",  // Error: incorrect number of values
+                "add xx 25.0",  // Error: non-numeric data
+                "addX 0.0 0.0", // Error: invalid command
                 "divide 100.0 50.0",
                 "add 25.0 92.0",
                 "subtract 225.0 17.0",
@@ -12,8 +15,14 @@ public class Main {
 
         CalculateHelper helper = new CalculateHelper();
         for(String statement:statements) {
-            helper.process(statement);
-            System.out.println(helper);
+            try {
+                helper.process(statement);
+                System.out.println(helper);
+            } catch (InvalidStatementException e) {
+                System.out.println(e.getMessage());
+                if (e.getCause() != null)
+                    System.out.println(" Original exception: " + e.getCause().getMessage());
+            }
         }
 //        MathEquation[] equations = new MathEquation[4];
 //        equations[0] = new MathEquation('d', 100.0d, 50.0d);
