@@ -23,7 +23,7 @@ public class Adder extends CalculateBase implements MathProcessing {
     }
 
     @Override
-    public double doCalcuation(double leftVal, double rightVal) {
+    public double doCalculation(double leftVal, double rightVal) {
         setLeftVal(leftVal);
         setRightVal(rightVal);
         calculate();
